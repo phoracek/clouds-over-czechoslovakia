@@ -1,5 +1,11 @@
 # GIS notes
 
+Good sources:
+
+* <https://mountcreo.com/article/gdal-translate-basics-functionality-and-examples/>
+* <https://medium.com/planet-stories/a-gentle-introduction-to-gdal-part-1-a3253eb96082>
+* <https://gdal.org/en/latest/programs/gdal_translate.html>
+
 Satelite images are taken from <https://view.eumetsat.int/productviewer?v=default#>, using it's WMS API and 'GeoColour RGB - MTG - 0 degree' visualization.
 
 Download the needed tooling:
