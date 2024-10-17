@@ -1,6 +1,12 @@
 # Current state of the skies in black and white
 
-LICENSE
+# License
+
+Boundary lines in this project are taken from <https://www.naturalearthdata.com> where they were kindly rpesented as public domain.
+
+Satelite images are taken from [EUMETSAT](https://www.eumetsat.int/) [MTG GeoColour RGB](https://view.eumetsat.int/productviewer?v=mtg_fd:rgb_geocolour#), credits should go to NASA.
+
+All the code under this repository is distributed under the terms of the MIT license. See [LICENSE](LICENSE) for details.
 
 # GIS notes
 
