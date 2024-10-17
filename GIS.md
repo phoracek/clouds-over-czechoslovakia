@@ -26,7 +26,7 @@ Download specific part of the map as GeoTiff (can be opened in QGis):
 gdal_translate -of GTiff -outsize 1000 0  "WMS:https://view.eumetsat.int/geoserver/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=mtg_fd%3Argb_geocolour&CRS=CRS:84&BBOX=10.2777938842773,48.3506393432617,20.2807235717773,52.3563919067383&FORMAT=image/jpeg&TILESIZE=256&OVERVIEWCOUNT=17&MINRESOLUTION=0.0000053644180298&TILED=true" out.tif
 ```
 
-Download boundary lines from <https://www.naturalearthdata.com/downloads/110m-cultural-vectors/>.
+Download land boundaries from <https://www.naturalearthdata.com/downloads/10m-cultural-vectors/>.
 
 Open the boundary lines in QGIS. Create a new scratch layer for polygons. Draw a square over central Europe. Create a new scratch layer from intersection of the polygon and boundaries. Export it as a SHP file.
 
