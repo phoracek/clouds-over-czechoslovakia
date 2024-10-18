@@ -42,9 +42,9 @@ fn process_image(source: &str, target: &str, target_bitmap: &str) {
 }
 
 fn convert_to_bitmap(target_image: image::ImageBuffer<Luma<u8>, Vec<u8>>) -> BitVec<u8, Msb0> {
-    let mut bits = bitvec![u8, Msb0; 0];
-    for x in 0..TARGET_WIDTH {
-        for y in 0..TARGET_HEIGHT {
+    let mut bits = bitvec![u8, Msb0;];
+    for y in 0..TARGET_HEIGHT {
+        for x in 0..TARGET_WIDTH {
             bits.push(target_image.get_pixel(x, y).to_luma().0[0] < 127)
         }
     }
