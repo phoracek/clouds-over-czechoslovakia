@@ -1,0 +1,11 @@
+FROM rust:1.81 as builder
+
+COPY ./ditherer /opt/ditherer-build
+WORKDIR /opt/ditherer-build
+RUN cargo build --release
+
+FROM fedora-minimal:40
+COPY --from=builder /opt/ditherer-build/target/release/ditherer /usr/bin
+RUN microdnf install -y gdal
+COPY gis /opt/clouds/gis
+COPY entrypoint.sh /opt/clouds

@@ -27,9 +27,8 @@ fn process_image(source: &str, target: &str) {
 
     dither(&source_image, &mut target_image);
 
-    println!("SAVING");
     target_image.save(target).unwrap();
-    println!("SAVED {:?}", target);
+    println!("Saved dithered output as JPG {:?}", target);
 }
 
 fn get_lumen(luma: &image::Luma<u8>) -> u8 {
