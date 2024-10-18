@@ -1,6 +1,9 @@
 use std::env;
+use std::fs::File;
+use std::io::prelude::*;
 
-use image::Luma;
+use bitvec::prelude::*;
+use image::{Luma, Pixel};
 
 const TARGET_WIDTH: u32 = 800;
 const TARGET_HEIGHT: u32 = 480;
@@ -10,11 +13,12 @@ fn main() {
 
     let source = &args[1];
     let target = &args[2];
+    let target_bitmap = &args[3];
 
-    process_image(source, target);
+    process_image(source, target, target_bitmap);
 }
 
-fn process_image(source: &str, target: &str) {
+fn process_image(source: &str, target: &str, target_bitmap: &str) {
     let source_image = image::open(source)
         .unwrap()
         .resize_to_fill(
@@ -23,12 +27,28 @@ fn process_image(source: &str, target: &str) {
             image::imageops::FilterType::Gaussian,
         )
         .to_luma8();
+
     let mut target_image = image::GrayImage::new(TARGET_WIDTH, TARGET_HEIGHT);
 
     dither(&source_image, &mut target_image);
 
     target_image.save(target).unwrap();
-    println!("Saved dithered output as JPG {:?}", target);
+    println!("Saved dithered output as {:?}", target);
+
+    let mut file = File::create(target_bitmap).unwrap();
+    let bits = convert_to_bitmap(target_image);
+    file.write_all(bits.as_raw_slice()).unwrap();
+    println!("Saved dithered output as {:?}", target_bitmap);
+}
+
+fn convert_to_bitmap(target_image: image::ImageBuffer<Luma<u8>, Vec<u8>>) -> BitVec<u8, Msb0> {
+    let mut bits = bitvec![u8, Msb0; 0];
+    for x in 0..TARGET_WIDTH {
+        for y in 0..TARGET_HEIGHT {
+            bits.push(target_image.get_pixel(x, y).to_luma().0[0] < 127)
+        }
+    }
+    bits
 }
 
 fn get_lumen(luma: &image::Luma<u8>) -> u8 {
