@@ -1,4 +1,4 @@
-# Current state of the skies in black and white
+# The state of the skies in black and white
 
 ![Example](example.png)
 
