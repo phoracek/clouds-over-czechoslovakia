@@ -1,6 +1,6 @@
 # Current state of the skies in black and white
 
-* [GIS.md](GIS.md) - notes about (mostly) command line processing of satelite pictures and map data.
+![Example](example.png)
 
 # License
 
