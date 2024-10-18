@@ -7,6 +7,7 @@
 pushd ditherer
 cargo run -- ../eumetsat_mtg_geocolour_rgb_central_europe/eumetsat_rgb_central_europe_plus_boundaries_mercator.jpg ../eumetsat_mtg_geocolour_rgb_central_europe/eumetsat_rgb_central_europe_plus_boundaries_mercator_dithered.png
 popd
+podman build -t clouds_over_czechoslovakia .
 ```
 
 # License
