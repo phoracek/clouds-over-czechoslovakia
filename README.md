@@ -2,6 +2,13 @@
 
 ![Example](example.png)
 
+```sh
+./hack/generate_rgb_map.sh
+pushd ditherer
+cargo run -- ../eumetsat_mtg_geocolour_rgb_central_europe/eumetsat_rgb_central_europe_plus_boundaries_mercator.jpg ../eumetsat_mtg_geocolour_rgb_central_europe/eumetsat_rgb_central_europe_plus_boundaries_mercator_dithered.png
+popd
+```
+
 # License
 
 Boundary lines in this project are taken from <https://www.naturalearthdata.com> where they were kindly presented as public domain.
