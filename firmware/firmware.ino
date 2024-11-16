@@ -1,20 +1,3 @@
-/* Display test for Good Display GDEY075T7
- * example from Good Display is used
- *
- * Board:   LaskaKit ESPink ESP32 e-Paper
- * https://www.laskakit.cz/laskakit-espink-esp32-e-paper-pcb-antenna/ Display:
- * Good Display GDEY075T7
- * https://www.laskakit.cz/good-display-gdey075t7-7-5--800x480-epaper-displej-grayscale/
- *
- * Email:podpora@laskakit.cz
- * Web:laskakit.cz
- */
-
-// TODO: Update libs from the good display reference, drop mentions of laskakit
-
-// ! For the board settings see Display_EPD_W21_spi.h
-
-
 #include <HTTPClient.h>
 #include <SPI.h>
 #include <WiFi.h>
