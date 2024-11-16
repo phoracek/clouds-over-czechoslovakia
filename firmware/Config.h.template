@@ -1,0 +1,4 @@
+// Copy this file to `Config.h` and replace the placeholder values.
+
+#define CONFIG_TIMESTAMP_URL "http://<address>"
+#define CONFIG_BITMAP_URL "http://<address>"
