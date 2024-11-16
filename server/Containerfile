@@ -6,6 +6,6 @@ RUN cargo build --release
 
 FROM fedora-minimal:40
 COPY --from=builder /opt/ditherer-build/target/release/ditherer /usr/bin
-RUN microdnf install -y gdal
+RUN microdnf install -y gdal && microdnf clean all
 COPY gis /opt/clouds/gis
 COPY entrypoint.sh /opt/clouds
