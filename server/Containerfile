@@ -4,7 +4,7 @@ COPY ./ditherer /opt/ditherer-build
 WORKDIR /opt/ditherer-build
 RUN cargo build --release
 
-FROM fedora-minimal:40
+FROM registry.fedoraproject.org/fedora-minimal:40
 COPY --from=builder /opt/ditherer-build/target/release/ditherer /usr/bin
 RUN microdnf install -y gdal && microdnf clean all
 COPY gis /opt/clouds/gis
