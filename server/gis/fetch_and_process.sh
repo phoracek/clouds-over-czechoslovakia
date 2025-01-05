@@ -15,8 +15,16 @@ rm -f ${BUILD_DIR}/eumetsat_boundaries.tif
 cp ${BUILD_DIR}/eumetsat.tif ${BUILD_DIR}/eumetsat_boundaries.tif
 gdal_rasterize -b 1 -b 2 -b 3 -burn 255 -burn 255 -burn 255 -l ne_10m_admin_0_boundary_lines_land_central_europe ${SOURCE_DIR}/naturalearthdata_boundary_lines_central_europe/ne_10m_admin_0_boundary_lines_land_central_europe.shp ${BUILD_DIR}/eumetsat_boundaries.tif
 
+rm -f ${BUILD_DIR}/eumetsat_points_square.tif
+cp ${BUILD_DIR}/eumetsat_boundaries.tif ${BUILD_DIR}/eumetsat_points_square.tif
+gdal_rasterize -b 1 -b 2 -b 3 -burn 255 -burn 255 -burn 255 -l points_square ${SOURCE_DIR}/points_square/points_square.shp ${BUILD_DIR}/eumetsat_points_square.tif
+
+rm -f ${BUILD_DIR}/eumetsat_points_dot.tif
+cp ${BUILD_DIR}/eumetsat_points_square.tif ${BUILD_DIR}/eumetsat_points_dot.tif
+gdal_rasterize -b 1 -b 2 -b 3 -burn 0 -burn 0 -burn 0 -l points_dot ${SOURCE_DIR}/points_dot/points_dot.shp ${BUILD_DIR}/eumetsat_points_dot.tif
+
 rm -f ${BUILD_DIR}/eumetsat_boundaries_mercator.tif
-gdalwarp -t_srs ESRI:53004 -r lanczos -wo SOURCE_EXTRA=1000 -co COMPRESS=LZW ${BUILD_DIR}/eumetsat_boundaries.tif ${BUILD_DIR}/eumetsat_boundaries_mercator.tif
+gdalwarp -t_srs ESRI:53004 -r lanczos -wo SOURCE_EXTRA=1000 -co COMPRESS=LZW ${BUILD_DIR}/eumetsat_points_dot.tif ${BUILD_DIR}/eumetsat_boundaries_mercator.tif
 
 rm -f ${BUILD_DIR}/eumetsat_boundaries_mercator.jpg
 gdal_translate -of JPEG -scale ${BUILD_DIR}/eumetsat_boundaries_mercator.tif ${BUILD_DIR}/eumetsat_boundaries_mercator.jpg
